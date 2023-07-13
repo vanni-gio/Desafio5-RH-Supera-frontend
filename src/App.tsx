@@ -4,21 +4,46 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="page-container" style={{ background: "red" }}>
+      <header>
+        <h1>Banco App</h1>
       </header>
+      <main>
+        <div className='container-transferencias'>
+          <div className='cotainer-form'>
+            <form action="/" method='get'>
+              <label className='label-input-form' htmlFor="">Data Início</label>
+              <input className='input-form' type="datetime-local" name="data-inicio" id="" />
+              <label className='label-input-form' htmlFor="">Data Fim</label>
+              <input className='input-form' type="datetime-local" name="data-final" id="" />
+              <label className='label-input-form' htmlFor="">Nome Operador Transacionado</label>
+              <input className='input-form' type="text" name="nome" id="" />
+              <button className='button-form' type='submit'>Pesquisar</button>
+            </form>
+          </div>
+          <div className='container-table-transacoes'>
+            <table className='table-transacoes'>
+              <tr className='row-transacoes'>
+                <th className='col-transacoes'>A</th>
+                <th className='col-transacoes'>B</th>
+                <th className='col-transacoes'>C</th>
+              </tr>
+              <tr className='row-transacoes'>
+                <th className='col-transacoes'>A</th>
+                <th className='col-transacoes'>B</th>
+                <th className='col-transacoes'>C</th>
+              </tr>
+              <tr className='row-transacoes'>
+                <th className='col-transacoes'>A</th>
+                <th className='col-transacoes'>B</th>
+                <th className='col-transacoes'>C</th>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+
+      </main>
     </div>
   );
 }
