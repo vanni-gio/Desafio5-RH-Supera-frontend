@@ -102,31 +102,4 @@ export const TabelaTransferencias = ({dadosTabela}: PropsTabelaTransferencias) =
         noBottomColumns={true}
         
       />)
-    // return (
-    //     <MDBTable>
-    //         <MDBTableHead>
-    //             <tr className='row-header row-transacoes'>
-    //                 <th className='col-transacoes'>CPF</th>
-    //                 <th className='col-transacoes'>Nro. Conta</th>
-    //                 <th className='col-transacoes'>Data</th>
-    //                 <th className='col-transacoes'>Valencia</th>
-    //                 <th className='col-transacoes'>Tipo</th>
-    //                 <th className='col-transacoes'>Nome do Operador Transacionado</th>
-    //             </tr>
-    //         </MDBTableHead>
-    //     <MDBTableHead className='table-transacoes'>
-    //         {dadosTabela.map(t => (
-    //             <tr key={t.id} className='row-transacoes'>
-    //                 <th className='col-transacoes'>{t.conta.cpf.slice(0,3)}.{t.conta.cpf.slice(3,6)}.{t.conta.cpf.slice(6, 9)}-{t.conta.cpf.slice(9,11)}</th>
-    //                 <th className='col-transacoes'>{t.conta.nroConta}</th>
-    //                 <th className='col-transacoes'>{new Date(t.dataTransferencia).toLocaleDateString('en-GB')}</th>
-    //                 <th className='col-transacoes'>R$  {t.valor}</th>
-    //                 <th className='col-transacoes'>{t.tipo}</th>
-    //                 <th className='col-transacoes'>{t.nomeOperadorTransferencia}</th>
-    //             </tr>
-    //         ))}
-    //     </MDBTableHead>
-
-    //   </MDBTable>
-    // );
   }
