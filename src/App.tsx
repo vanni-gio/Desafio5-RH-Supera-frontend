@@ -1,46 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { getTransferencias } from './api/api'
+import { TabelaTransferencias } from './components/TabelaTransferencias';
+import { Transferencia } from './types/Transferencia';
+import { FiltroTransferencia } from './components/FiltroTransferencia';
 
 function App() {
-  return (
-    <div className="page-container" style={{ background: "red" }}>
-      <header>
-        <h1>Banco App</h1>
-      </header>
-      <main>
-        <div className='container-transferencias'>
-          <div className='cotainer-form'>
-            <form action="/" method='get'>
-              <label className='label-input-form' htmlFor="">Data Início</label>
-              <input className='input-form' type="datetime-local" name="data-inicio" id="" />
-              <label className='label-input-form' htmlFor="">Data Fim</label>
-              <input className='input-form' type="datetime-local" name="data-final" id="" />
-              <label className='label-input-form' htmlFor="">Nome Operador Transacionado</label>
-              <input className='input-form' type="text" name="nome" id="" />
-              <button className='button-form' type='submit'>Pesquisar</button>
-            </form>
-          </div>
-          <div className='container-table-transacoes'>
-            <table className='table-transacoes'>
-              <tr className='row-transacoes'>
-                <th className='col-transacoes'>A</th>
-                <th className='col-transacoes'>B</th>
-                <th className='col-transacoes'>C</th>
-              </tr>
-              <tr className='row-transacoes'>
-                <th className='col-transacoes'>A</th>
-                <th className='col-transacoes'>B</th>
-                <th className='col-transacoes'>C</th>
-              </tr>
-              <tr className='row-transacoes'>
-                <th className='col-transacoes'>A</th>
-                <th className='col-transacoes'>B</th>
-                <th className='col-transacoes'>C</th>
-              </tr>
-            </table>
-          </div>
+  const [transferencias, setTransferencias] = useState<Transferencia[]>([]);
 
+  useEffect(() => {
+      getTransferencias().then((resp) => {
+        setTransferencias(resp.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+
+  }, [])
+  
+  return (
+    <div className="page-container">
+      <header>
+        <h1 style={{color: 'seagreen', textShadow: '2px -1px darkseagreen'}}>Banco App</h1>
+        <FiltroTransferencia></FiltroTransferencia>
+        <hr/>
+      </header>
+      <main className='main-content'>
+        <div className='container-transferencias'>
+          <div className='container-table-transacoes'>
+              <section className='section-saldo'>
+                <div className='container-saldo'>
+                  <label className='label-saldo'>Saldo Total: </label>
+                  <span className='qtd-saldo'>R$ 50,00</span>
+                </div>
+                <div className='container-saldo'>
+                  <label className='label-saldo'>Saldo no Periodo: </label>
+                  <span className='qtd-saldo'>R$ 50,00</span>
+                </div>
+              </section>
+            <TabelaTransferencias dadosTabela={transferencias}></TabelaTransferencias>
+          </div>
         </div>
 
       </main>
