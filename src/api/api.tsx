@@ -3,7 +3,11 @@ import { Conta } from "../types/Conta";
 import { Transferencia } from "../types/Transferencia";
 
 export type GetContasResponse = {
-    data: Transferencia[];
+    data: {
+        transferencias: Transferencia[]
+        saldoTotal: number;
+        saldoPeriodo: number;
+    };
 }
 
 const api = axios.create({
@@ -13,9 +17,16 @@ const api = axios.create({
     }
 });
 
-export const getTransferencias = () => {
+export const getTransferencias = (filtro?: string) => {
+    let route = '/transferencias';
+    if(typeof filtro === 'string'){
+        route = route + filtro;
+        console.log(route);
+        
+    }
+
     try {
-        const result = api.get('/transferencias').then((response) => {
+        const result = api.get(route).then((response) => {
             //const products: GetContasResponse = response.data['data'];
             const data: GetContasResponse = response;
             
